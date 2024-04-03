@@ -12,16 +12,12 @@ pipeline {
             }
         }
         stage('archive') { 
-            input {
-                message "Want ot archive "
-                ok "Yes, I am"
-            }
             steps {
                archiveArtifacts artifacts: '**/*.war'
             }
         stage('Deploy to QA') { 
             steps {
-               build job: "Deploy_to_Tomcat"
+               build job: Deploy_to_Tomcat
             }  
         }
     }
