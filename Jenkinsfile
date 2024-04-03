@@ -18,7 +18,7 @@ pipeline {
         }   
         stage('Deploy to QA') { 
             steps {
-               bat 'timeout /t 120'
+               timeout /t 120 /nobreak
                build job: 'Deploy_to_Tomcat', wait: true
             }  
         }
