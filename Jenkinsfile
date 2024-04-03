@@ -18,7 +18,7 @@ pipeline {
         }   
         stage('Deploy to QA') { 
             steps {
-               build job: 'Deploy_to_Tomcat'
+               build job: 'Deploy_to_Tomcat', wait: true
             }  
         }
     }
