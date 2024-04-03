@@ -18,7 +18,7 @@ pipeline {
         }   
         stage('Deploy to QA') { 
             steps {
-               bat ''' timeout /t 120 /nobreak  > NUL '''
+               bat ''' ping  -n 10 127.1.1.1 > nul '''
                build job: 'Deploy_to_Tomcat', wait: true
             }  
         }
