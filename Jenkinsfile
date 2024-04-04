@@ -1,6 +1,6 @@
 pipeline {
-    agent any 
-     triggers {
+    agent any
+    triggers {
         pollSCM('* * * * *')
      }
     stages {
@@ -20,16 +20,25 @@ pipeline {
             }
         }   
         stage('Deploy to dev') { 
+            when {
+                branch 'dev'
+            }
             steps {
                echo "deploy to dev"
             }  
         }
         stage('Deploy to QA') { 
+            when {
+                branch 'release'
+            }
             steps {
                echo "deploy to QA"
             }  
         }
         stage('Deploy to prod') { 
+            when {
+                branch 'master'
+            }
             steps {
                echo "deploy to prod"
             }  
