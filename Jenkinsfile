@@ -3,22 +3,22 @@ pipeline {
     stages {
         stage('clean') { 
             steps {
-               bat 'mvn clean'
+               echo "clean"
             }
         }
         stage('build') { 
             steps {
-               bat 'mvn package'
+               echo " build"
             }
         }
         stage('archive') { 
             steps {
-               archiveArtifacts artifacts: '**/*.war'
+               echo "Archive"
             }
         }   
         stage('Deploy to QA') { 
             steps {
-               build job: 'Deploy_to_Tomcat'
+               echo "deploy to QA"
             }  
         }
     }
